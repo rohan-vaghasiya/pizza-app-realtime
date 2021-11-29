@@ -15,31 +15,31 @@
 <body>
     <nav class="container mx-auto flex items-center justify-between py-4">
         <div>
-            <a href="/"><img src="/img/logo.png" alt="logo"></a>
+            <a href="/"><img class="pizza-logo" src="/img/logo.png" alt="logo"></a>
         </div>
         <div>
-            <ul class="flex items-center">
-                <li class="ml-6"><a href="/">Menu</a></li>
+            <ul class="nav-ul flex items-center">
+                <li class="ml-6 nav-text"><a href="/">Menu</a></li>
                 <% if(user) { %>
                     <% if(user.role=='admin' ) { %>
-                        <li class="ml-6"><a href="/admin/product">Product</a></li>
-                        <li class="ml-6"><a href="/admin/orders">Orders</a></li>
+                        <li class="ml-6 nav-text"><a href="/admin/product">Product</a></li>
+                        <li class="ml-6 nav-text"><a href="/admin/orders">Orders</a></li>
                         <% } else { %>
-                            <li class="ml-6"><a href="/customer/orders">My orders</a></li>
+                            <li class="ml-6 nav-text"><a href="/customer/orders">My orders</a></li>
                             <% } %>
-                                <li class="ml-6">
+                                <li class="ml-6 nav-text">
                                     <form id="logout" action="/logout" method="POST">
                                         <a onclick="document.getElementById('logout').submit()"
                                             cursor-pointer>Logout</a>
                                     </form>
                                 </li>
                                 <% } else { %>
-                                    <li class="ml-6"><a href="/register">Register</a></li>
-                                    <li class="ml-6"><a href="/login">Login</a></li>
+                                    <li class="ml-6 nav-text"><a href="/register">Register</a></li>
+                                    <li class="ml-6 nav-text"><a href="/login">Login</a></li>
                                     <% } %>
                                         <% if(user) { %>
                                             <% if(user.role=='customer' ) { %>
-                                                <li class="ml-6"><a href="/cart"
+                                                <li class="ml-6 cart-logo-mobile"><a href="/cart"
                                                         class="cart-logo inline-block px-4 py-2 rounded-full flex items-center">
                                                         <span id="cartCounter" class="text-white font-bold pr-2">
                                                             <%= session.cart ? session.cart.totalQty : '' %>
@@ -48,7 +48,7 @@
                                                     </a></li>
                                                 <% } %>
                                                     <% } else { %>
-                                                        <li class="ml-6"><a href="/cart"
+                                                        <li class="ml-6 cart-logo-mobile"><a href="/cart"
                                                                 class="cart-logo inline-block px-4 py-2 rounded-full flex items-center">
                                                                 <span id="cartCounter"
                                                                     class="text-white font-bold pr-2">

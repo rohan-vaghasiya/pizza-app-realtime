@@ -212,6 +212,72 @@ section.status {
     }
 }
 
+
+@media(max-width: 500px) {
+    .nav-ul li{
+        margin-left: 0.7rem;
+    }
+
+    .nav-text {
+        font-size:13px;
+    }
+    .pizza-logo{
+       width: 100%;
+    margin-right: -26px;
+    }
+    .cart-logo-mobile span{
+         font-size:13px;
+    }
+    .cart-logo-mobile img{
+         width:50%;
+    }
+    .cart-logo-mobile a{
+         padding-left: 9px;
+         padding-right: 9px;
+    }
+    .cart{
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+    .order-summery{
+            font-size: 1rem;
+    }
+    .cart-logo-summary{
+            width: 30px;
+    }
+    .pizza-list-item{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .pizza-item-img{
+        width: 4rem;
+    }
+    .pizza-list-item h1,span{
+            font-size: 13px;
+    }
+    .circle-img{
+        width: 75%;
+    }
+    .minus-btn{
+       margin-right: 0rem
+    }
+    .add-btn{
+        margin-left: 0.5rem
+    }
+    .price-div{
+       width: 18rem !important;
+    }
+    .payment-form{
+        width: 80%;
+    }
+    .paymentform-btn{
+        padding-left: 1rem;
+        margin-right:1rem;
+        padding-right: 1rem;
+        font-size: 13px;
+    }
+}
+
 .StripeElement {
     box-sizing: border-box;
     width: 50%;

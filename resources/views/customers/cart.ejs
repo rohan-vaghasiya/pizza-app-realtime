@@ -2,14 +2,14 @@
     <% if(session.cart) { %>
         <div class="order container mx-auto xl:w-1/2">
             <div class="flex items-center border-b border-gray-300 pb-4">
-                <img src="/img/cart-black.png" alt="">
-                <h1 class="font-bold ml-4 text-2xl">Order summary</h1>
+                <img src="/img/cart-black.png" class="cart-logo-summary" alt="">
+                <h1 class="font-bold order-summery ml-4 text-2xl">Order summary</h1>
             </div>
             <div class="pizza-list">
                 <% for(let pizza of Object.values(session.cart.items)) { %>
-                    <div class="flex items-center my-8">
+                    <div class="pizza-list-item flex items-center my-8">
 
-                        <img class="w-24" src="/img/<%= pizza.item.image %>" alt="">
+                        <img class="w-24 pizza-item-img" src="/img/<%= pizza.item.image %>" alt="">
 
                         <div class="ml-4" style="width: 20rem;">
                             <h1>
@@ -21,11 +21,11 @@
                         </div>
 
 
-                        <div class="flex" style="width: 24rem;">
+                        <div class="flex price-div" style="width: 24rem;">
 
                             <form action="/minus-qty/<%=pizza.item._id %>" method="post">
-                                <button class="mr-4" onclick="this.form.submit()" style="outline: none;">
-                                    <img src="https://img.icons8.com/ios/25/000000/minus.png" />
+                                <button class="mr-4 minus-btn" onclick="this.form.submit()" style="outline: none;">
+                                    <img src="https://img.icons8.com/ios/25/000000/minus.png" class="circle-img" />
                                 </button>
                             </form>
 
@@ -34,15 +34,15 @@
                             </span>
 
                             <form action="/add-qty/<%=pizza.item._id %>" method="post">
-                                <button class="ml-4" onclick="this.form.submit()" style="outline: none;">
-                                    <img src="https://img.icons8.com/ios/25/000000/add.png" />
+                                <button class="ml-4 add-btn" onclick="this.form.submit()" style="outline: none;">
+                                    <img src="https://img.icons8.com/ios/25/000000/add.png" class="circle-img" />
                                 </button>
                             </form>
 
                         </div>
 
 
-                        <span class="w-28 font-bold text-lg" style="width: 7rem;">₹
+                        <span class="w-28 font-bold text-sm md:text-xl" style="width: 7rem;">₹
                             <%= pizza.item.price * pizza.qty %>
                         </span>
 
@@ -53,13 +53,14 @@
             <hr>
             <div class="text-right py-4">
                 <div>
-                    <span class="text-lg font-bold">Total Amount:</span>
-                    <span class="amount text-2xl font-bold ml-2">₹<%= session.cart.totalPrice %></span>
+                    <span class="text-sm md:text-xl font-bold">Total Amount:</span>
+                    <span class="amount text-xl xl:text-2xl font-bold ml-2">₹<%= session.cart.totalPrice %>
+                    </span>
                 </div>
                 <% if(user) { %>
                     <div>
                         <form action="/orders" method="POST" class="mt-12" id="payment-Form">
-                            <div class="relative w-1/2 ml-auto mb-4">
+                            <div class="relative w-1/2 ml-auto mb-4 payment-form">
                                 <select id="paymentType" name="paymentType"
                                     class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="cod">Cash on delivery</option>
@@ -74,18 +75,20 @@
                                     </svg>
                                 </div>
                             </div>
-                            <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="text"
+                            <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4 payment-form" type="text"
                                 placeholder="Phone number">
-                            <input name="address" class="border border-gray-400 p-2 w-1/2" type="text"
+                            <input name="address" class="border border-gray-400 p-2 w-1/2 payment-form" type="text"
                                 placeholder="Address">
                             <div class="mt-4">
                                 <div id="card-element"></div>
                                 <a href="/empty-cart">
-                                    <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
+                                    <button
+                                        class="btn-primary paymentform-btn px-6 py-2 rounded-full text-white font-bold mt-6"
                                         type="button">
                                         Clear Cart</button>
                                 </a>
-                                <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
+                                <button
+                                    class="btn-primary paymentform-btn px-6 py-2 rounded-full text-white font-bold mt-6"
                                     type="submit">Order
                                     Now</button>
                             </div>
@@ -94,11 +97,12 @@
 
                     <% } else { %>
                         <a href="/empty-cart">
-                            <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6" type="button">
+                            <button class="btn-primary px-6 py-2 paymentform-btn rounded-full text-white font-bold mt-6"
+                                type="button">
                                 Clear Cart</button>
                         </a>
                         <a href="/login"
-                            class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Login
+                            class="inline-block cursor-pointer paymentform-btn btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Login
                             to continue</a>
                         <% } %>
             </div>
