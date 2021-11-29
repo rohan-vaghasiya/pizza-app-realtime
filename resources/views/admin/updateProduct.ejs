@@ -1,0 +1,101 @@
+<section class="product flex justify-center pt-24">
+
+    <div class="hidden sm:block" aria-hidden="true">
+        <div class="py-5">
+            <div class="border-t border-gray-200"></div>
+        </div>
+    </div>
+
+    <div class="mt-10 sm:mt-0">
+        <div class="md:grid md:grid-cols-3 md:gap-6">
+            <div class="md:col-span-1">
+                <div class="px-4 sm:px-0">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Product Information</h3>
+                    <p class="mt-1 text-sm text-gray-600">
+                        Update existing products.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-5 md:mt-0 md:col-span-2">
+                <form action="/admin/product/update/<%= product._id  %>" enctype="multipart/form-data" method="POST"
+                    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 pl-8" role="form">
+                    <% if(messages.error) { %>
+                        <span class="text-red-500" style="font-size: 16px;font-weight: bold;">
+                            <%= messages.error %>
+                        </span>
+                        <% } %>
+                            <div class="shadow overflow-hidden sm:rounded-md">
+                                <div class="px-4 py-5 bg-white sm:p-6">
+                                    <div class="grid grid-cols-6 gap-6">
+
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="iname"
+                                                class="block text-gray-700 text-sm font-bold mb-2">Product
+                                                Name </label>
+                                            <input type="text" name="name" id="namei" value="<%= product.name  %>"
+                                                autocomplete="given-name"
+                                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        </div><br>
+
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="isize" class="block text-gray-700 text-sm font-bold mb-2">
+                                                Size </label>
+                                            <select id="country" name="size" autocomplete="country-name"
+                                                class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                                <option <%=product.size=='SMALL' ? 'selected' : '' %>>
+                                                    SMALL
+                                                </option>
+                                                <option <%=product.size=='MEDIUM' ? 'selected' : '' %>>
+                                                    MEDIUM
+                                                </option>
+                                                <option <%=product.size=='LARGE' ? 'selected' : '' %>>
+                                                    LARGE</option>
+                                            </select>
+                                        </div> <br>
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="iprice" class="block text-gray-700 text-sm font-bold mb-2">
+                                                Price </label>
+                                            <input type="text" name="price" id="pricei" autocomplete="given-name"
+                                                value="<%= product.price  %>"
+                                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        </div> <br>
+
+                                        <br>
+
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="first-name" class="block text-gray-700 text-sm font-bold mb-2">
+                                                Image </label>
+                                            <img src="/img/<%= product.image %>" alt="" style="width: 9rem;
+                                            margin-bottom: 15px;"
+                                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ">
+                                            <input type="file" name="iimage" id="imagei"
+                                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                    <button
+                                        class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        type="submit">
+                                        Update item
+                                    </button>
+
+                                </div>
+                                <!-- <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                            <button type="submit"
+                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Save
+                            </button>
+                        </div> -->
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden sm:block" aria-hidden="true">
+        <div class="py-5">
+            <div class="border-t border-gray-200"></div>
+        </div>
+    </div>
+</section>
